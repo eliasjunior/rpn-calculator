@@ -67,8 +67,6 @@ public class StackManager implements CustomStack<Double> {
         if (stack == null || stack.isEmpty()) {
             return "";
         }
-        System.out.println("printStack frs ==>" +stack.size());
-        System.out.println("printStack first ==>" +stack.getLast());
         Deque<Double> aux = new ArrayDeque<>();
         for (Double num : stack) {
             aux.push(num);
@@ -77,7 +75,6 @@ public class StackManager implements CustomStack<Double> {
         for (Double num : aux) {
             result.append(customFormatUtil.formatNumber(num)).append(" ");
         }
-        System.out.println("printStack ==>" + result.toString().trim());
         return result.toString().trim();
     }
 

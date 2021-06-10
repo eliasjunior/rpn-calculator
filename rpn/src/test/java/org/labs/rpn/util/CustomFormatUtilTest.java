@@ -15,6 +15,7 @@ class CustomFormatUtilTest {
             }
         };
         assertEquals("1.4142135623", customFormatUtil.formatNumber(Math.sqrt(2)));
+       // assertEquals("1.4142135623", customFormatUtil.formatNumber(Math.sqrt(3)));
         assertEquals("10.5", customFormatUtil.formatNumber(42.0/4.0));
     }
 }

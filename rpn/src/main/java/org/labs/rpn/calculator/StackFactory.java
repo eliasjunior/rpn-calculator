@@ -12,6 +12,6 @@ public class StackFactory {
                 return CustomFormatUtil.super.formatNumber(num);
             }
         };
-        return new CustomStackImpl(new ArrayDeque<>(), new ArrayDeque<>(), new ArrayDeque<>(), customFormatUtil);
+        return new StackManager(new ArrayDeque<>(), new ArrayDeque<>(), new ArrayDeque<>(), customFormatUtil);
     }
 }

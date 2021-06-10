@@ -18,6 +18,9 @@ public class BasicOperatorImpl implements BasicOperator<Double> {
 
     @Override
     public Double divide(Double a, Double b) {
+        if(b == 0) {
+            throw new RuntimeException("Attempt to divide by zero");
+        }
         return a/b;
     }
 

@@ -24,7 +24,7 @@ but the main module is tested and easy to maintain or extent.
    mvn clean package
    ```
 
-### Usage
+### Usage (From the root folder)
 - run cli:
 ```bash
 java -jar rpn-cli/target/rpn-cli-1.0-SNAPSHOT.jar

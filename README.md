@@ -59,7 +59,7 @@ Simple cli for demonstration
 
 ## Observation
 
-There are some comments on why how and why I've chosen some implementations
+There are some comments in the code on how and why I've chosen some implementations
 
 Happy Reviewing :)
 

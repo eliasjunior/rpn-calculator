@@ -55,6 +55,8 @@ public class StackManager implements CustomStack<Double> {
     @Override
     public void clear() {
         stack = new ArrayDeque();
+        numberPopTracker = new ArrayDeque<>();
+        operatorTracker = new ArrayDeque<>();
     }
 
     @Override

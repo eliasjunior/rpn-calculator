@@ -4,14 +4,17 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public interface CustomFormatUtil {
+    // this method still basic and will need futures business decision to display more complex cases
     default String formatNumber(Double num) {
-        Double fraction = Double.valueOf(getFractionPartFromFloat(num));
-        if(fraction > 0) {
-            // TODO review here
-            if(getFractionPartFromFloat(num).length() < 3) {
+        final int MIN_PRECISION_DISPLAY = 10;
+        final int MAX_READABLE_FRACTIONAL = 3;
+        String fractionPartStr = getFractionPartFromFloat(num);
+        Double fractionPart = Double.valueOf(fractionPartStr);
+        if(fractionPart > 0) {
+            if(fractionPartStr.length() < MAX_READABLE_FRACTIONAL) {
                 return String.valueOf(num);
             } else {
-                return format(10, num);
+                return format(MIN_PRECISION_DISPLAY, num);
             }
         } else {
             return String.valueOf(num.intValue());

@@ -23,15 +23,10 @@ but the main module is tested and easy to maintain or extent, always in mind usi
    ```
 2. Install Maven dependencies packages, run the command bellow.
    ```sh
-   mvn package
+   mvn clean package
    ```
 
 ### Usage
-from the root folder
-- install:
-```bash
-mvn clean package
-```
 - run cli:
 ```bash
 java -jar rpn-cli/target/rpn-cli-1.0-SNAPSHOT.jar
@@ -56,10 +51,19 @@ The goal of the file structure here is to be easy to navigate
 
 There is a basic CI with Git Actions that build, and test the project once changes pushed to master.
 
-There is basic 
+### rpn module 
 
+Here is the heart to the app, the dependencies are injected to allow easy maintainability and testability
 
+### cli module 
 
+Simple cli for demonstration
+
+## Observation
+
+There are some comments on why how and why I've chosen some implementations
+
+Happy Reviewing :)
 
 
 

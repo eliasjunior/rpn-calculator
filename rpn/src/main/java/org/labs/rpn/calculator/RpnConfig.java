@@ -5,6 +5,8 @@ import org.labs.rpn.validator.InputValidator;
 
 import java.util.ArrayDeque;
 
+//RpnConfig is to facilitate components creation, acts as a Factory
+
 public class RpnConfig {
     public static CustomStack<Double> createStackManager() {
         CustomFormatUtil customFormatUtil = new CustomFormatUtil() {

@@ -7,15 +7,16 @@ import java.util.Deque;
 
 public class StackManager implements CustomStack<Double> {
     private Deque<Double> stack;
-    private Deque<Double> numberPopTracker;
+    private Deque<Double> numberRemovedTracker;
     private Deque<String> operatorTracker;
     private CustomFormatUtil customFormatUtil;
 
-    public StackManager(Deque<Double> stack, Deque<Double> numberPopTracker, Deque<String> operatorTracker,
+    // dependencies are injected to make extensible and easy to test.
+    public StackManager(Deque<Double> stack, Deque<Double> numberRemovedTracker, Deque<String> operatorTracker,
                         CustomFormatUtil customFormatUtil) {
         // passing the stack here as we could use another stack implementation under Deque hierarchy
         this.stack = stack;
-        this.numberPopTracker = numberPopTracker;
+        this.numberRemovedTracker = numberRemovedTracker;
         this.operatorTracker = operatorTracker;
         this.customFormatUtil = customFormatUtil;
     }
@@ -34,28 +35,28 @@ public class StackManager implements CustomStack<Double> {
     @Override
     public Double remove() {
         checkStackEmpty("remove");
-        numberPopTracker.push(stack.pop());
-        return numberPopTracker.peek();
+        numberRemovedTracker.push(stack.pop());
+        return numberRemovedTracker.peek();
     }
 
     @Override
     public void undo() {
         checkStackEmpty("undo");
-        if (!numberPopTracker.isEmpty() && !operatorTracker.isEmpty()) {
+        if (!numberRemovedTracker.isEmpty() && !operatorTracker.isEmpty()) {
             operatorTracker.pop();
             stack.pop();
             //remove last 2 numbers
-            stack.push(numberPopTracker.pop());
-            stack.push(numberPopTracker.pop());
+            stack.push(numberRemovedTracker.pop());
+            stack.push(numberRemovedTracker.pop());
         } else {
-            numberPopTracker.push(stack.pop());
+            numberRemovedTracker.push(stack.pop());
         }
     }
 
     @Override
     public void clear() {
         stack = new ArrayDeque();
-        numberPopTracker = new ArrayDeque<>();
+        numberRemovedTracker = new ArrayDeque<>();
         operatorTracker = new ArrayDeque<>();
     }
 

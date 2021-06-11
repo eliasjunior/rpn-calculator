@@ -1,9 +1,9 @@
 [![Java CI with Maven](https://github.com/eliasjunior/rpn-calculator/actions/workflows/build.yml/badge.svg)](https://github.com/eliasjunior/rpn-calculator/actions/workflows/build.yml)
 
-# RPN Calculator
+# RPN Calculator 
 
-The project is splitted into modules to make parts decoupled to make RPN-Calculator reusable and extendable, I've built a very simple CLI to demostration usage,
-but the main module is tested and easy to maintain or extent.
+RPN(reverse polish notation) It's some of the best calculation in the world, this project uses a stack for its implementation
+ 
 
 ## Getting Started
 
@@ -51,11 +51,15 @@ There is a basic CI with Git Actions that build, and test the project once chang
 
 ### rpn module 
 
-Here is the heart of the app, the dependencies are injected to allow easy maintainability and testability
+Here is the heart of the app, OperatorManager class uses dependency injection for easy maintainability and testability,
+we can replace/extend or add new functionalities very easily
+
+the file structure should speak for itself (screaming architecture)
 
 ### cli module 
 
-Simple cli for demonstration
+Simple cli for demonstration, we can replace by an UI or any other client it makes no difference for the core module,
+
 
 ## Observation
 

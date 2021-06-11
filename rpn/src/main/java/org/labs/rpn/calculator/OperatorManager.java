@@ -1,6 +1,7 @@
 package org.labs.rpn.calculator;
 
 import org.labs.rpn.exceptions.CustomOperationException;
+import org.labs.rpn.exceptions.InputValidationException;
 import org.labs.rpn.validator.Validator;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public class OperatorManager {
     private final BasicOperator<Double> numberBasicOperator;
 
     public OperatorManager(CustomStack<Double> customStack, BasicOperator<Double> numberBasicOperator,
-                           Validator validator ) {
+                           Validator validator) {
         this.customStack = customStack;
         this.numberBasicOperator = numberBasicOperator;
         this.validator = validator;
@@ -21,17 +22,22 @@ public class OperatorManager {
 
     public void execute(List<String> cmdList) {
         for (String element : cmdList) {
-            validator.validate(element);
-            if (validator.isNumber(element)) {
-                customStack.add(Double.valueOf(element));
-            } else {
-                executeOperator(element);
+            try {
+                validator.validate(element);
+                if (validator.isNumber(element)) {
+                    customStack.add(Double.valueOf(element));
+                } else {
+                    executeOperator(element);
+                }
+            } catch (InputValidationException e) {
+                // recoverable error
+                System.err.println(e.getLocalizedMessage());
             }
         }
     }
 
     public String print() {
-        return customStack.printStack();
+        return  customStack.printStack();
     }
 
     private void executeOperator(String operator) {
@@ -85,5 +91,4 @@ public class OperatorManager {
         }
         return new double[]{num1, num2};
     }
-
 }

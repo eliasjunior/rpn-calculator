@@ -1,15 +1,15 @@
 package org.labs.rpn.validator;
 
-import org.labs.rpn.exceptions.CustomOperationException;
+import org.labs.rpn.exceptions.InputValidationException;
 
 import static org.labs.rpn.util.Constants.*;
 
-public class InputValidator implements Validator{
+public class InputValidator implements Validator {
     @Override
-    public void validate(String input) {
+    public void validate(String input) throws InputValidationException {
         boolean isInValid = !isNumber(input) && !isValidCommand(input);
-        if(isInValid) {
-            throw new CustomOperationException("operator "+input+ " is not valid!");
+        if (isInValid) {
+            throw new InputValidationException("Operator " + input + " is not valid!");
         }
     }
 

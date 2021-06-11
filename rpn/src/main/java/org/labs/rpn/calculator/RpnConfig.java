@@ -1,11 +1,12 @@
 package org.labs.rpn.calculator;
 
 import org.labs.rpn.util.CustomFormatUtil;
+import org.labs.rpn.validator.InputValidator;
 
 import java.util.ArrayDeque;
 
-public class StackFactory {
-    public static CustomStack<Double> createCustomStack() {
+public class RpnConfig {
+    public static CustomStack<Double> createStackManager() {
         CustomFormatUtil customFormatUtil = new CustomFormatUtil() {
             @Override
             public String formatNumber(Double num) {
@@ -13,5 +14,13 @@ public class StackFactory {
             }
         };
         return new StackManager(new ArrayDeque<>(), new ArrayDeque<>(), new ArrayDeque<>(), customFormatUtil);
+    }
+
+    public static BasicOperator<Double> createBasicOperator() {
+        return new BasicOperatorImpl();
+    }
+
+    public static OperatorManager createOperatorManager() {
+        return new OperatorManager(createStackManager(), createBasicOperator(), new InputValidator());
     }
 }

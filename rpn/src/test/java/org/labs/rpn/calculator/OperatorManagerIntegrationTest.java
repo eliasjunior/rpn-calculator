@@ -1,28 +1,17 @@
 package org.labs.rpn.calculator;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.labs.rpn.exceptions.CustomOperationException;
 import org.labs.rpn.validator.InputValidator;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.labs.rpn.util.Constants.*;
 
-public class OperatorManagerTest {
-    @Test
-    public void testShouldThrowErrorWhenInputIsNotValid() {
-        OperatorManager operatorManager = create();
-        assertThrows(CustomOperationException.class, () -> {
-            operatorManager.execute(Arrays.asList("2", "magic"));
-        });
-        assertThrows(CustomOperationException.class, () -> {
-            operatorManager.execute(Arrays.asList("t","abc"));
-        });
-    }
-
+public class OperatorManagerIntegrationTest {
     @Test
     public void testExample2() {
         OperatorManager operatorManager = create();
@@ -41,7 +30,7 @@ public class OperatorManagerTest {
         operatorManager.execute(Arrays.asList("3", SUBTRACT));
         assertEquals("0", operatorManager.print());
 
-        operatorManager.execute(Arrays.asList(CLEAR));
+        operatorManager.execute(Collections.singletonList(CLEAR));
         assertEquals("", operatorManager.print());
     }
 
@@ -92,13 +81,11 @@ public class OperatorManagerTest {
     @Test
     public void testExample8() {
         OperatorManager operatorManager = create();
-        assertThrows(CustomOperationException.class, () -> {
-            operatorManager.execute(Arrays.asList("1", "2", "3", MULTIPLY, "5", SUM, MULTIPLY, MULTIPLY, "6", "5"));
-        });
+        assertThrows(CustomOperationException.class, () -> operatorManager.execute(Arrays.asList("1", "2", "3", MULTIPLY, "5", SUM, MULTIPLY, MULTIPLY, "6", "5")));
     }
 
     private OperatorManager create() {
-        return new OperatorManager(new StackFactory().createCustomStack(), new BasicOperatorImpl(),
+        return new OperatorManager(RpnConfig.createStackManager(), new BasicOperatorImpl(),
                 new InputValidator());
     }
 }

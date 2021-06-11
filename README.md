@@ -51,7 +51,7 @@ There is a basic CI with Git Actions that build, and test the project once chang
 
 ### rpn module 
 
-Here is the heart to the app, the dependencies are injected to allow easy maintainability and testability
+Here is the heart of the app, the dependencies are injected to allow easy maintainability and testability
 
 ### cli module 
 

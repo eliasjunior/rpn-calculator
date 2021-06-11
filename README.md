@@ -2,10 +2,8 @@
 
 # RPN Calculator
 
-The project is splited into modules to make parts decoubled as the future of
-RPN-Calculator in the company is to have an UI, I've built a very simple CLI to demostration usage,
-but the main module is tested and easy to maintain or extent, always in mind using main SOLID principles as SRP and OCP
-
+The project is splitted into modules to make parts decoupled to make RPN-Calculator reusable and extendable, I've built a very simple CLI to demostration usage,
+but the main module is tested and easy to maintain or extent.
 
 ## Getting Started
 

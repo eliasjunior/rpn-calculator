@@ -40,7 +40,7 @@ mvn clean test
 The goal of the file structure here is to be easy to navigate
 
 <a href="https://github.com/eliasjunior/rpn-calculator/blob/main/images/files-structure.png">
-   <img src="img/files-structure.png" alt="Logo"  width="506px" height="895px">
+   <img src="img/file-structure.png" alt="Logo"  width="506px" height="895px">
 </a>
 
 ## Technical Overview 
